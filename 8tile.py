@@ -1,6 +1,8 @@
 import copy
 import queue as q
 
+#input board with each number space seperated, and the blank tile is indicated by the digit 0.
+
 class game:
     def __init__(self):
         self.size = 0
