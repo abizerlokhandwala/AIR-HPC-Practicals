@@ -1,4 +1,5 @@
 // %%cu
+// as data type is int, sum might overflow (depending on rand(), but the seq and parallel answers are still equal, or change int to long long (too lazy sorry))
 #include<iostream>
 #include<vector>
 #include<cstdlib>
