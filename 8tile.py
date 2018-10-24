@@ -1,8 +1,6 @@
 import copy
 import queue as q
 
-#input board with each number space seperated, and the blank tile is indicated by the digit 0.
-
 class game:
     def __init__(self):
         self.size = 0
@@ -68,12 +66,14 @@ class game:
         pq.put((0,0,board))
         steps = 0
         parent = {}
+        flag = 0
         while pq.qsize()>0:
             top = pq.get()
             g = int(top[1])
             board = top[2]
             if board == self.final_gameboard:
                 steps = g
+                flag = 1
                 break;
             pos_zero = self.findZero(board)
             moves = self.getValidMoves(board, pos_zero)
@@ -85,10 +85,14 @@ class game:
                 if str(board_temp) not in self.visited:
                     self.visited.add(str(board_temp))
                     h = self.calculate_heuristic(board_temp)
+                    # h = 0
                     f = g + h
                     pq.put((f,g,board_temp))
                     parent[str(board_temp)] = board
 
+        if flag == 0:
+            print("Not Solvable")
+            return 0
         board = copy.deepcopy(self.final_gameboard)
         board_moves = []
         while(board != self.init_gameboard):
