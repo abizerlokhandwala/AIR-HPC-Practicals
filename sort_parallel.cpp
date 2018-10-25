@@ -5,9 +5,9 @@
 using namespace std;
 
 void bubble_seq(vector<int>a, int n){
+    int cnt=1;
     while(1){
         int f=0;
-        int cnt=1;
         for(int i=0;i<n-cnt;i++){
             if(a[i]>a[i+1]){
                 swap(a[i],a[i+1]);
